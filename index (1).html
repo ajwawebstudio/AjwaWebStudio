@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJWA Web Studio — Website Design, Branding & Digital Strategy</title>
+<meta name="description" content="AJWA Web Studio designs modern websites, brand identities, social media and digital strategy that help small businesses build a professional online presence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FDF9F6;
+    --ivory-deep:#FAF1EC;
+    --charcoal:#2B2420;
+    --charcoal-soft:#5A4F49;
+    --pink:#F3C9D4;
+    --pink-soft:#F7DCE3;
+    --peach:#FBE6D8;
+    --peach-soft:#FDF1E9;
+    --rose:#E8A4B6;
+    --gold:#C6976B;
+    --gold-deep:#AD7E56;
+    --line:#E9DCD4;
+    --shadow-sm: 0 2px 10px rgba(43,36,32,0.06);
+    --shadow-md: 0 12px 32px rgba(43,36,32,0.10);
+    --shadow-lg: 0 24px 60px rgba(43,36,32,0.14);
+    --ease: cubic-bezier(.22,1,.36,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--ivory);
+    color:var(--charcoal);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font:inherit;cursor:pointer;border:none;background:none;}
+  section{position:relative;}
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:1px;
+    background:var(--gold-deep);
+    display:inline-block;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  :focus-visible{
+    outline:2px solid var(--gold-deep);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(253,249,246,0.82);
+    backdrop-filter:blur(14px) saturate(160%);
+    -webkit-backdrop-filter:blur(14px) saturate(160%);
+    border-bottom:1px solid var(--line);
+    transition:box-shadow .3s var(--ease);
+  }
+  header.scrolled{ box-shadow:var(--shadow-sm); }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 32px;max-width:1180px;margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:20px;
+    letter-spacing:0.02em;
+    display:flex;align-items:center;gap:10px;
+  }
+  .logo-img{
+    height:54px;width:54px;border-radius:50%;object-fit:cover;
+    box-shadow:0 0 0 1px rgba(198,151,107,0.25);
+  }
+  .nav-links{
+    display:flex;align-items:center;gap:36px;
+  }
+  .nav-links a{
+    font-size:14.5px;font-weight:500;color:var(--charcoal-soft);
+    position:relative;padding:4px 0;
+    transition:color .25s var(--ease);
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;
+    background:var(--gold-deep);transition:width .3s var(--ease);
+  }
+  .nav-links a:hover{color:var(--charcoal);}
+  .nav-links a:hover::after{width:100%;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:13px 26px;border-radius:999px;
+    font-size:14.5px;font-weight:600;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+    color:#fff;box-shadow:var(--shadow-sm);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+  .btn-ghost{
+    background:transparent;color:var(--charcoal);
+    border:1px solid var(--charcoal);
+  }
+  .btn-ghost:hover{background:var(--charcoal);color:var(--ivory);}
+  .btn-outline-light{
+    border:1px solid rgba(43,36,32,0.25);color:var(--charcoal);
+  }
+  .btn-outline-light:hover{background:var(--peach-soft);border-color:var(--gold);}
+  .btn-whatsapp{
+    background:#fff;color:var(--charcoal);border:1px solid var(--line);
+  }
+  .btn-whatsapp:hover{border-color:var(--gold);box-shadow:var(--shadow-sm);}
+
+  .menu-toggle{
+    display:none;width:40px;height:40px;border-radius:10px;
+    align-items:center;justify-content:center;
+  }
+  .menu-toggle span, .menu-toggle::before, .menu-toggle::after{
+    content:'';display:block;width:20px;height:1.5px;background:var(--charcoal);
+    transition:.3s var(--ease);
+  }
+  .menu-toggle{flex-direction:column;gap:5px;}
+  .menu-toggle.open span{opacity:0;}
+  .menu-toggle.open::before{transform:rotate(45deg) translate(5px,5px);}
+  .menu-toggle.open::after{transform:rotate(-45deg) translate(5px,-5px);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 80px;
+    overflow:hidden;
+    background:
+      radial-gradient(700px 420px at 82% -8%, var(--peach-soft) 0%, transparent 60%),
+      radial-gradient(500px 380px at -5% 30%, var(--pink-soft) 0%, transparent 65%);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+  }
+  .thread-svg{
+    position:absolute;left:38px;top:20px;width:120px;height:640px;
+    opacity:0.55;pointer-events:none;
+  }
+  .hero-copy .eyebrow{margin-bottom:22px;}
+  .hero h1{
+    font-size:clamp(38px,4.6vw,64px);
+    color:var(--charcoal);
+    max-width:12ch;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--gold-deep);font-weight:400;
+  }
+  .hero-sub{
+    margin-top:22px;font-size:17.5px;color:var(--charcoal-soft);
+    max-width:46ch;
+  }
+  .hero-actions{
+    margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;
+  }
+  .brand-line{
+    margin-top:44px;font-size:12.5px;letter-spacing:0.22em;
+    color:var(--gold-deep);font-weight:600;text-transform:uppercase;
+    display:flex;align-items:center;gap:14px;
+  }
+  .brand-line .dot{width:4px;height:4px;border-radius:50%;background:var(--gold-deep);}
+
+  .hero-visual{
+    position:relative;height:460px;
+  }
+  .hero-watermark{
+    position:absolute;width:300px;height:300px;border-radius:50%;
+    left:50%;top:52%;transform:translate(-50%,-50%);
+    opacity:0.16;z-index:0;filter:saturate(1.1);
+    mix-blend-mode:multiply;
+  }
+  .device{
+    position:absolute;border-radius:14px;background:#fff;
+    box-shadow:var(--shadow-lg);overflow:hidden;
+    border:8px solid #fff;
+  }
+  .device-desktop{
+    width:100%;max-width:440px;aspect-ratio:16/10.5;
+    left:0;top:6px;z-index:2;border-radius:16px;border-width:10px;
+    transform:rotate(-2deg);
+  }
+  .device-tablet{
+    width:150px;aspect-ratio:3/4;right:6%;top:52%;z-index:3;
+    transform:rotate(6deg);border-radius:18px;
+  }
+  .device-phone{
+    width:92px;aspect-ratio:9/18.5;right:-2%;top:2%;z-index:1;
+    transform:rotate(9deg);border-radius:22px;border-width:6px;
+  }
+  .screen{width:100%;height:100%;position:relative;}
+  .screen-desktop{background:linear-gradient(160deg,var(--peach-soft),var(--pink-soft) 70%);}
+  .screen-tablet{background:linear-gradient(160deg,var(--pink-soft),var(--ivory-deep));}
+  .screen-phone{background:linear-gradient(160deg,var(--ivory-deep),var(--peach-soft));}
+  .screen-bar{height:22px;background:var(--ivory);display:flex;align-items:center;gap:5px;padding:0 10px;border-bottom:1px solid var(--line);}
+  .screen-bar span{width:6px;height:6px;border-radius:50%;background:var(--line);}
+  .screen-block{position:absolute;background:rgba(255,255,255,0.65);border:1px solid rgba(198,151,107,0.25);border-radius:6px;}
+
+  /* ---------- SECTION SHELL ---------- */
+  .section{padding:110px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,42px);margin-top:16px;}
+  .section-alt{background:var(--ivory-deep);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:start;}
+  .about-figure{
+    aspect-ratio:4/5;border-radius:20px;
+    background:linear-gradient(150deg,var(--peach),var(--pink) 65%);
+    position:relative;overflow:hidden;box-shadow:var(--shadow-md);
+  }
+  .about-photo{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    mix-blend-mode:multiply;opacity:0.92;
+  }
+  .about-figure::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(150deg,rgba(243,201,212,0.55),rgba(251,230,216,0.35) 65%);
+    z-index:1;
+  }
+  .about-figure::after{
+    content:'';position:absolute;inset:18px;border:1px solid rgba(255,255,255,0.65);border-radius:12px;z-index:2;
+  }
+  .about-figure .tag{z-index:3;}
+  .about-figure .tag{
+    position:absolute;left:24px;bottom:24px;background:#fff;
+    padding:14px 18px;border-radius:12px;box-shadow:var(--shadow-sm);
+    font-family:'Fraunces',serif;font-size:14px;color:var(--charcoal);
+  }
+  .about-copy p{color:var(--charcoal-soft);font-size:16px;margin-bottom:18px;max-width:56ch;}
+  .about-copy h2{font-size:clamp(26px,3vw,36px);margin-bottom:22px;}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:18px;
+    padding:34px 28px;transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:var(--pink);}
+  .card-icon{
+    width:48px;height:48px;border-radius:12px;
+    background:linear-gradient(135deg,var(--peach),var(--pink));
+    display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+  }
+  .card-icon svg{width:22px;height:22px;stroke:var(--gold-deep);}
+  .card h3{font-size:19px;font-weight:500;margin-bottom:10px;}
+  .card p{color:var(--charcoal-soft);font-size:14.5px;margin-bottom:20px;}
+  .card-link{
+    font-size:13.5px;font-weight:600;color:var(--gold-deep);
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .card-link svg{width:14px;height:14px;transition:transform .3s var(--ease);}
+  .card:hover .card-link svg{transform:translateX(4px);}
+
+  /* ---------- WHY ---------- */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;}
+  .why-item{background:#fff;padding:36px 30px;}
+  .why-item .card-icon{margin-bottom:18px;}
+  .why-item h3{font-size:16.5px;font-weight:600;margin-bottom:8px;}
+  .why-item p{font-size:13.8px;color:var(--charcoal-soft);}
+
+  /* ---------- PROCESS ---------- */
+  .process-wrap{position:relative;max-width:760px;margin:0 auto;}
+  .process-line{
+    position:absolute;left:27px;top:12px;bottom:12px;width:1px;
+    background:linear-gradient(var(--gold) 0%, var(--pink) 100%);
+    opacity:0.5;
+  }
+  .process-item{
+    display:grid;grid-template-columns:56px 1fr;gap:26px;padding-bottom:52px;position:relative;
+  }
+  .process-item:last-child{padding-bottom:0;}
+  .process-num{
+    width:56px;height:56px;border-radius:50%;background:#fff;
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:15px;color:var(--gold-deep);font-weight:500;
+    box-shadow:var(--shadow-sm);z-index:1;
+  }
+  .process-item h3{font-size:19px;font-weight:500;margin-bottom:8px;letter-spacing:0.04em;}
+  .process-item p{color:var(--charcoal-soft);font-size:15px;max-width:48ch;}
+
+  /* ---------- PORTFOLIO ---------- */
+  .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .p-card{border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:transform .35s var(--ease), box-shadow .35s var(--ease);}
+  .p-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+  .p-thumb{aspect-ratio:4/3;position:relative;overflow:hidden;}
+  .p-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;transition:transform .5s var(--ease);}
+  .p-card:hover .p-photo{transform:scale(1.06);}
+  .p-thumb .fill{position:absolute;inset:0;opacity:0.5;mix-blend-mode:soft-light;}
+  .p-body{padding:22px 22px 24px;}
+  .p-cat{font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;}
+  .p-body h3{font-size:17.5px;font-weight:500;margin:8px 0 14px;}
+  .p-link{font-size:13.5px;font-weight:600;color:var(--charcoal);display:inline-flex;align-items:center;gap:6px;}
+  .p-link svg{width:13px;height:13px;}
+
+  /* ---------- SOCIAL ---------- */
+  .social-band{
+    background:linear-gradient(135deg,var(--peach) 0%, var(--pink-soft) 55%, var(--ivory-deep) 100%);
+    border-radius:28px;padding:64px 48px;text-align:center;
+  }
+  .social-band h2{font-size:clamp(26px,3vw,36px);}
+  .social-band .sub{color:var(--charcoal-soft);margin-top:14px;font-size:16px;}
+  .social-icons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:38px;}
+  .social-icons a{
+    width:52px;height:52px;border-radius:50%;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--shadow-sm);transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .social-icons a:hover{transform:translateY(-4px) scale(1.05);box-shadow:var(--shadow-md);}
+  .social-icons svg{width:20px;height:20px;stroke:var(--charcoal);}
+  .social-band .btn{margin-top:36px;}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;display:flex;align-items:center;justify-content:space-between;
+    padding:26px 4px;text-align:left;font-family:'Fraunces',serif;font-size:18px;font-weight:500;
+    gap:20px;color:var(--charcoal);
+  }
+  .faq-q .plus{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1px solid var(--gold);
+    position:relative;transition:transform .35s var(--ease), background .35s var(--ease);
+  }
+  .faq-q .plus::before,.faq-q .plus::after{
+    content:'';position:absolute;background:var(--gold-deep);top:50%;left:50%;
+    transform:translate(-50%,-50%);transition:.3s var(--ease);
+  }
+  .faq-q .plus::before{width:10px;height:1.4px;}
+  .faq-q .plus::after{width:1.4px;height:10px;}
+  .faq-item.open .plus{background:var(--gold);}
+  .faq-item.open .plus::after{transform:translate(-50%,-50%) scaleY(0);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+  .faq-a p{padding:0 4px 26px;color:var(--charcoal-soft);font-size:15px;max-width:60ch;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;}
+  .contact-info h2{font-size:clamp(28px,3.2vw,40px);}
+  .contact-info p{color:var(--charcoal-soft);margin-top:18px;font-size:16px;max-width:42ch;}
+  .contact-whatsapp{
+    margin-top:32px;padding:22px;border-radius:16px;background:#fff;border:1px solid var(--line);
+  }
+  .contact-whatsapp p{margin:0 0 14px;font-size:14px;color:var(--charcoal-soft);}
+  form{background:#fff;border:1px solid var(--line);border-radius:20px;padding:38px;box-shadow:var(--shadow-sm);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:8px;color:var(--charcoal-soft);}
+  .field input, .field select, .field textarea{
+    width:100%;padding:13px 15px;border-radius:10px;border:1px solid var(--line);
+    font:inherit;font-size:14.5px;background:var(--ivory);color:var(--charcoal);
+    transition:border-color .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(198,151,107,0.15);
+  }
+  .field textarea{resize:vertical;min-height:110px;}
+  .form-msg{margin-top:16px;font-size:13.5px;color:var(--gold-deep);display:none;}
+  .form-msg.show{display:block;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:linear-gradient(135deg,var(--pink) 0%, var(--peach) 60%, var(--peach-soft) 100%);
+    border-radius:0;padding:110px 0;text-align:center;position:relative;overflow:hidden;
+  }
+  .final-cta::before{
+    content:'';position:absolute;width:520px;height:520px;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.5);top:-260px;right:-140px;
+  }
+  .final-cta h2{font-size:clamp(30px,4vw,50px);max-width:16ch;margin:0 auto;}
+  .final-cta p{margin-top:18px;color:var(--charcoal-soft);max-width:46ch;margin-left:auto;margin-right:auto;font-size:16.5px;}
+  .final-cta .btn{margin-top:32px;}
+  .final-cta .tagline{margin-top:22px;font-family:'Fraunces',serif;font-style:italic;color:var(--gold-deep);font-size:15px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--charcoal);color:var(--ivory-deep);padding:72px 0 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;}
+  .footer-logo{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:#fff;}
+  .footer-tag{margin-top:12px;font-size:12px;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;}
+  .footer-desc{margin-top:20px;font-size:14px;color:#c9beb6;max-width:34ch;}
+  footer h4{font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#c9beb6;margin-bottom:18px;font-weight:600;}
+  footer .flinks li{margin-bottom:12px;}
+  footer .flinks a{font-size:14.5px;color:#e7ded8;transition:color .25s var(--ease);}
+  footer .flinks a:hover{color:var(--pink);}
+  .footer-social{display:flex;flex-wrap:wrap;gap:10px;}
+  .footer-social a{
+    width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);
+    display:flex;align-items:center;justify-content:center;transition:.3s var(--ease);
+  }
+  .footer-social a:hover{background:var(--gold);border-color:var(--gold);}
+  .footer-social svg{width:16px;height:16px;stroke:#e7ded8;}
+  .footer-social a:hover svg{stroke:#2B2420;}
+  .footer-bottom{
+    margin-top:56px;padding-top:26px;border-top:1px solid rgba(255,255,255,0.1);
+    font-size:13px;color:#9c9089;
+  }
+
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease), transform .7s var(--ease);}
+  [data-reveal].in{opacity:1;transform:none;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{height:340px;margin-top:20px;}
+    .about-grid, .contact-grid{grid-template-columns:1fr;gap:44px;}
+    .services-grid, .why-grid, .portfolio-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .thread-svg{display:none;}
+  }
+  @media (max-width:720px){
+    .nav-links{
+      position:fixed;top:68px;left:0;right:0;bottom:0;background:var(--ivory);
+      flex-direction:column;justify-content:flex-start;padding:36px 32px;gap:0;
+      transform:translateX(100%);transition:transform .4s var(--ease);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{width:100%;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px;}
+    .nav-links .btn{margin-top:20px;width:100%;}
+    .menu-toggle{display:flex;}
+    .section{padding:72px 0;}
+    .services-grid, .why-grid, .portfolio-grid{grid-template-columns:1fr;}
+    .why-grid{border-radius:14px;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;gap:32px;}
+    .social-band{padding:44px 24px;border-radius:20px;}
+    .wrap{padding:0 22px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="nav">
+    <a href="#home" class="logo">
+      <img src="assets/ajwa-logo.jpeg" alt="AJWA Web Studio" class="logo-img">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="btn btn-primary">Start Your Project</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <svg class="thread-svg" viewBox="0 0 120 640" fill="none">
+      <path d="M20 10 C 60 100, -10 200, 40 300 C 90 400, 10 500, 50 630" stroke="#C6976B" stroke-width="1.2"/>
+      <circle cx="20" cy="10" r="4" fill="#C6976B"/>
+    </svg>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy" data-reveal>
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" style="margin-bottom:14px;">
+            <path d="M17 30V10" stroke="#C6976B" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M17 14c-4-1-6-4-6-8 4 0 7 2 8 6" stroke="#C6976B" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M17 20c4-1 6-4 6-8-4 0-7 2-8 6" stroke="#C6976B" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="17" cy="6" r="2.2" fill="#F3C9D4" stroke="#C6976B" stroke-width="0.8"/>
+          </svg>
+          <span class="eyebrow">Digital Design Studio</span>
+          <h1>Your Business <em>Deserves</em> to Grow.</h1>
+          <p class="hero-sub">We create digital experiences that help businesses build, connect and grow online — through thoughtful websites, brand identity and digital strategy.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Start Your Project</a>
+            <a href="#services" class="btn btn-ghost">Explore Services</a>
+          </div>
+          <div class="brand-line"><span>Design</span><span class="dot"></span><span>Develop</span><span class="dot"></span><span>Grow</span></div>
+        </div>
+        <div class="hero-visual" data-reveal>
+          <img src="assets/ajwa-logo.jpeg" alt="" class="hero-watermark" aria-hidden="true">
+          <div class="device device-desktop">
+            <div class="screen screen-desktop">
+              <div class="screen-bar"><span></span><span></span><span></span></div>
+              <div class="screen-block" style="top:36px;left:18px;width:60%;height:14px;"></div>
+              <div class="screen-block" style="top:64px;left:18px;width:40%;height:10px;"></div>
+              <div class="screen-block" style="top:100px;left:18px;width:28%;height:60px;border-radius:8px;"></div>
+              <div class="screen-block" style="top:100px;left:calc(28% + 32px);width:28%;height:60px;border-radius:8px;"></div>
+              <div class="screen-block" style="top:100px;right:18px;width:28%;height:60px;border-radius:8px;"></div>
+            </div>
+          </div>
+          <div class="device device-tablet">
+            <div class="screen screen-tablet">
+              <div class="screen-block" style="top:16px;left:14px;right:14px;height:26px;border-radius:6px;"></div>
+              <div class="screen-block" style="top:52px;left:14px;right:14px;height:60px;border-radius:6px;"></div>
+              <div class="screen-block" style="top:122px;left:14px;right:14px;height:36px;border-radius:6px;"></div>
+            </div>
+          </div>
+          <div class="device device-phone">
+            <div class="screen screen-phone">
+              <div class="screen-block" style="top:14px;left:10px;right:10px;height:40px;border-radius:8px;"></div>
+              <div class="screen-block" style="top:64px;left:10px;right:10px;height:20px;border-radius:6px;"></div>
+              <div class="screen-block" style="top:92px;left:10px;right:10px;height:20px;border-radius:6px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="wrap about-grid">
+      <div class="about-figure" data-reveal>
+        <img src="https://picsum.photos/seed/ajwa-studio-desk/800/1000" alt="" class="about-photo">
+        <div class="tag">Design · Develop · Grow</div>
+      </div>
+      <div class="about-copy" data-reveal>
+        <span class="eyebrow">About AJWA</span>
+        <h2>Turning Ideas Into Digital Brands</h2>
+        <p>AJWA Web Studio is a digital design studio built around one idea: every business, no matter its size, deserves a professional and trustworthy presence online.</p>
+        <p>We work closely with founders and small business owners to design websites, build brand identities and shape a digital presence that feels considered — not generic. From the first sketch of an idea to a fully working website, we handle the design, development and strategy so your business can focus on what it does best.</p>
+        <p>Whether you're launching something new or giving an existing brand a stronger digital foundation, we bring together design, technology and clear communication to help you grow online.</p>
+        <a href="#contact" class="btn btn-ghost" style="margin-top:10px;">Let's Talk</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section-alt" id="services">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Services</span>
+        <h2>What We Do</h2>
+      </div>
+      <div class="services-grid">
+
+        <div class="card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M8 21h8"/></svg></div>
+          <h3>Website Design & Development</h3>
+          <p>Modern, responsive and user-friendly websites designed to represent your business professionally, on every device.</p>
+          <a href="#contact" class="card-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4.5L17.5 20 12 17l-5.5 3 1-6.5L3 9l6-1 3-6z"/></svg></div>
+          <h3>Branding</h3>
+          <p>Creative logos and visual identities that make your business memorable, cohesive and easy to recognise.</p>
+          <a href="#contact" class="card-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M8 17c0-2.2 1.8-4 4-4s4 1.8 4 4"/></svg></div>
+          <h3>Social Media Management</h3>
+          <p>Creative content and social media strategies designed to help your business connect with the right audience.</p>
+          <a href="#contact" class="card-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 012-2h9l5 5v10a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M8 12h8M8 16h5"/></svg></div>
+          <h3>Content Creation</h3>
+          <p>Meaningful, on-brand content that communicates your story and keeps your audience genuinely interested.</p>
+          <a href="#contact" class="card-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>SEO</h3>
+          <p>Search engine optimisation strategies designed to improve your visibility and help customers find you.</p>
+          <a href="#contact" class="card-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 8-9"/><path d="M14 7h6v6"/></svg></div>
+          <h3>Digital Strategy</h3>
+          <p>Practical, purpose-driven digital strategies that strengthen your online presence and support long-term growth.</p>
+          <a href="#contact" class="card-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY AJWA -->
+  <section class="section" id="why">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Why AJWA</span>
+        <h2>More Than Design. We Build Digital Presence.</h2>
+      </div>
+      <div class="why-grid" data-reveal>
+        <div class="why-item">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.5L20 9l-4.4 4 1.3 6L12 16l-4.9 3 1.3-6L4 9l5.6-.5z"/></svg></div>
+          <h3>Creative & Professional Design</h3>
+          <p>Every project balances visual creativity with a polished, professional finish.</p>
+        </div>
+        <div class="why-item">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M2 12h20M12 2c2.5 2.7 4 6.2 4 10s-1.5 7.3-4 10c-2.5-2.7-4-6.2-4-10s1.5-7.3 4-10z"/></svg></div>
+          <h3>Tailored Solutions</h3>
+          <p>No two businesses are the same, so no two projects follow the same template.</p>
+        </div>
+        <div class="why-item">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></div>
+          <h3>Modern Technology</h3>
+          <p>Websites and tools built with current, reliable technology that performs well.</p>
+        </div>
+        <div class="why-item">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-8.5 8.5 8.38 8.38 0 01-4-1L3 20l1-5.5A8.38 8.38 0 0112.5 3 8.38 8.38 0 0121 11.5z"/></svg></div>
+          <h3>Clear Communication</h3>
+          <p>You'll always know what stage your project is at and what happens next.</p>
+        </div>
+        <div class="why-item">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg></div>
+          <h3>Purpose-Driven Strategy</h3>
+          <p>Every decision is made with your business goals in mind, not just aesthetics.</p>
+        </div>
+        <div class="why-item">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div>
+          <h3>Long-Term Growth</h3>
+          <p>We design with room to grow, so your digital presence can scale with you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section section-alt" id="process">
+    <div class="wrap">
+      <div class="section-head" data-reveal style="margin-left:auto;margin-right:auto;text-align:center;">
+        <span class="eyebrow" style="justify-content:center;">Our Process</span>
+        <h2>How We Work, Step by Step</h2>
+      </div>
+      <div class="process-wrap" data-reveal>
+        <div class="process-line"></div>
+        <div class="process-item">
+          <div class="process-num">01</div>
+          <div><h3>Discover</h3><p>We start by understanding your business, your goals and the audience you want to reach.</p></div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">02</div>
+          <div><h3>Plan</h3><p>We shape the right strategy and direction before any design work begins.</p></div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">03</div>
+          <div><h3>Design</h3><p>We build your visual identity and design the digital experience around it.</p></div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">04</div>
+          <div><h3>Develop</h3><p>We turn the approved designs into a fully functional digital presence.</p></div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">05</div>
+          <div><h3>Grow</h3><p>We help you strengthen and build on your online presence after launch.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="section" id="portfolio">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Portfolio</span>
+        <h2>Concept Projects</h2>
+        <p style="margin-top:14px;color:var(--charcoal-soft);font-size:15px;">The projects below are original design concepts created to demonstrate our style and approach — not existing client work.</p>
+      </div>
+      <div class="portfolio-grid">
+
+        <div class="p-card" data-reveal>
+          <div class="p-thumb"><img class="p-photo" src="https://picsum.photos/seed/ajwa-boutique/600/450" alt=""><div class="fill" style="background:linear-gradient(150deg,var(--pink),var(--peach-soft));"></div></div>
+          <div class="p-body">
+            <span class="p-cat">Fashion / Boutique</span>
+            <h3>Reveille Boutique — Concept</h3>
+            <a href="#" class="p-link">View Concept <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <div class="p-card" data-reveal>
+          <div class="p-thumb"><img class="p-photo" src="https://picsum.photos/seed/ajwa-beauty/600/450" alt=""><div class="fill" style="background:linear-gradient(150deg,var(--peach),var(--rose));"></div></div>
+          <div class="p-body">
+            <span class="p-cat">Beauty Business</span>
+            <h3>Lumière Beauty Bar — Concept</h3>
+            <a href="#" class="p-link">View Concept <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <div class="p-card" data-reveal>
+          <div class="p-thumb"><img class="p-photo" src="https://picsum.photos/seed/ajwa-bakery/600/450" alt=""><div class="fill" style="background:linear-gradient(150deg,var(--peach-soft),var(--gold));"></div></div>
+          <div class="p-body">
+            <span class="p-cat">Home Bakery</span>
+            <h3>Sugar & Rose Bakehouse — Concept</h3>
+            <a href="#" class="p-link">View Concept <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <div class="p-card" data-reveal>
+          <div class="p-thumb"><img class="p-photo" src="https://picsum.photos/seed/ajwa-jewellery/600/450" alt=""><div class="fill" style="background:linear-gradient(150deg,var(--rose),var(--pink-soft));"></div></div>
+          <div class="p-body">
+            <span class="p-cat">Jewellery Brand</span>
+            <h3>Amara Fine Jewels — Concept</h3>
+            <a href="#" class="p-link">View Concept <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <div class="p-card" data-reveal>
+          <div class="p-thumb"><img class="p-photo" src="https://picsum.photos/seed/ajwa-handmade/600/450" alt=""><div class="fill" style="background:linear-gradient(150deg,var(--gold),var(--peach));"></div></div>
+          <div class="p-body">
+            <span class="p-cat">Handmade Products</span>
+            <h3>Terra & Twine Studio — Concept</h3>
+            <a href="#" class="p-link">View Concept <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <div class="p-card" data-reveal>
+          <div class="p-thumb"><img class="p-photo" src="https://picsum.photos/seed/ajwa-professional/600/450" alt=""><div class="fill" style="background:linear-gradient(150deg,var(--pink-soft),var(--charcoal-soft));"></div></div>
+          <div class="p-body">
+            <span class="p-cat">Professional Service</span>
+            <h3>Anwar & Associates — Concept</h3>
+            <a href="#" class="p-link">View Concept <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="social-band" data-reveal>
+        <span class="eyebrow" style="justify-content:center;">Let's Connect</span>
+        <h2 style="margin-top:16px;">Your brand deserves to be everywhere your customers are.</h2>
+        <div class="social-icons">
+          <a href="https://wa.me/923015982664" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.8A8.5 8.5 0 113 21z"/><path d="M8.5 9.5c0 3.5 3 6.5 6.5 6.5.7 0 1-.8.6-1.3l-1.2-1.5a.8.8 0 00-.9-.2l-1 .4a5 5 0 01-2.9-2.9l.4-1a.8.8 0 00-.2-.9L8.8 7.4c-.5-.4-1.3-.1-1.3.6z"/></svg></a>
+          <a href="https://www.instagram.com/ajwawebstudio/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="https://www.tiktok.com/@ajwa.web.studio" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v10.5a3.5 3.5 0 11-3-3.46"/><path d="M14 3c.5 2.5 2.3 4.3 5 4.7"/></svg></a>
+          <a href="https://www.youtube.com/@AjwaWebStudio" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10.5 9.5l5 2.5-5 2.5z"/></svg></a>
+          <a href="https://www.pinterest.com/@ajwawebstudio" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M9.5 18c1-3 1.5-5.5 1.5-5.5m0 0c-.5-1 0-3 2-3s2.3 1.7 1.8 3.5c-.4 1.4-1.6 2.5-3 2.2-.6-.1-1-.5-1-.5"/></svg></a>
+          <a href="https://www.facebook.com/ajwawebstudio" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h2V3.5h-2.5A4 4 0 0010 7.5V10H8v3.5h2V21h3.5v-7.5H16l.5-3.5h-3V8c0-.6.4-1 1-1z"/></svg></a>
+          <a href="https://share.google/7hPXeuyficZwPIJJJ" target="_blank" rel="noopener" aria-label="Google Business Profile"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg></a>
+          <a href="https://ajwawebstudio.blogspot.com/" target="_blank" rel="noopener" aria-label="Blog"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></a>
+        </div>
+        <a href="https://wa.me/923015982664" target="_blank" rel="noopener" class="btn btn-primary">Chat With Us on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head" data-reveal style="margin-left:auto;margin-right:auto;text-align:center;">
+        <span class="eyebrow" style="justify-content:center;">FAQ</span>
+        <h2>Common Questions</h2>
+      </div>
+      <div class="faq-list" data-reveal>
+        <div class="faq-item">
+          <button class="faq-q">What services does AJWA Web Studio provide?<span class="plus"></span></button>
+          <div class="faq-a"><p>We offer website design and development, branding, social media management, content creation, SEO and digital strategy.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Who can work with AJWA Web Studio?<span class="plus"></span></button>
+          <div class="faq-a"><p>We work with small businesses, entrepreneurs and brands who want a more professional and consistent presence online.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you create websites for small businesses?<span class="plus"></span></button>
+          <div class="faq-a"><p>Yes — small businesses are exactly who we design for. We build websites that are simple to manage and easy for your customers to use.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you provide branding and social media services?<span class="plus"></span></button>
+          <div class="faq-a"><p>Yes, both are core services. We can design your brand identity and help manage your social media presence.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you provide SEO?<span class="plus"></span></button>
+          <div class="faq-a"><p>Yes, we offer SEO as part of our digital strategy services, aimed at improving your visibility online.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How can I start a project?<span class="plus"></span></button>
+          <div class="faq-a"><p>Simply fill in the contact form below or message us directly on WhatsApp, and we'll get back to you to discuss your project.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-alt" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info" data-reveal>
+        <span class="eyebrow">Contact</span>
+        <h2>Let's Build Something Amazing Together.</h2>
+        <p>Have an idea, a new business or an existing brand that needs a stronger online presence? Let's turn your vision into a digital experience.</p>
+        <div class="contact-whatsapp">
+          <p>Prefer WhatsApp?</p>
+          <a href="https://wa.me/923015982664" target="_blank" rel="noopener" class="btn btn-whatsapp">Chat With Us</a>
+        </div>
+      </div>
+      <form id="contactForm" data-reveal>
+        <div class="form-row">
+          <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" required></div>
+          <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="business">Business Name</label><input type="text" id="business" name="business"></div>
+          <div class="field">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option>Website Design & Development</option>
+              <option>Branding</option>
+              <option>Social Media Management</option>
+              <option>Content Creation</option>
+              <option>SEO</option>
+              <option>Digital Strategy</option>
+              <option>Not Sure Yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="message">Message</label><textarea id="message" name="message" required placeholder="Tell us a little about your project..."></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Send Inquiry</button>
+        <p class="form-msg" id="formMsg">Thanks — your message is ready. For now this form is front-end only, so please also reach us on WhatsApp to make sure your inquiry reaches us.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2 data-reveal>Ready to Grow Your Business Online?</h2>
+      <p data-reveal>Let's create a digital presence that represents your brand and moves your business forward.</p>
+      <a href="#contact" class="btn btn-primary" data-reveal>Start Your Project</a>
+      <p class="tagline" data-reveal>Your Business Deserves to Grow.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <img src="assets/ajwa-logo.jpeg" alt="AJWA Web Studio" style="width:56px;height:56px;border-radius:50%;">
+      <div class="footer-logo" style="margin-top:14px;">AJWA WEB STUDIO</div>
+      <div class="footer-tag">Design · Develop · Grow</div>
+      <p class="footer-desc">A digital design studio helping small businesses build a professional, trustworthy presence online.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="flinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul class="flinks">
+        <li><a href="#services">Web Design</a></li>
+        <li><a href="#services">Branding</a></li>
+        <li><a href="#services">Social Media</a></li>
+        <li><a href="#services">Content Creation</a></li>
+        <li><a href="#services">SEO</a></li>
+        <li><a href="#services">Digital Strategy</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Follow Along</h4>
+      <div class="footer-social">
+        <a href="https://wa.me/923015982664" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.8A8.5 8.5 0 113 21z"/></svg></a>
+        <a href="https://www.instagram.com/ajwawebstudio/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="https://www.tiktok.com/@ajwa.web.studio" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v10.5a3.5 3.5 0 11-3-3.46"/></svg></a>
+        <a href="https://www.youtube.com/@AjwaWebStudio" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/></svg></a>
+        <a href="https://www.pinterest.com/@ajwawebstudio" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/></svg></a>
+        <a href="https://www.facebook.com/ajwawebstudio" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h2V3.5h-2.5A4 4 0 0010 7.5V10H8v3.5h2V21h3.5v-7.5H16l.5-3.5h-3V8c0-.6.4-1 1-1z"/></svg></a>
+        <a href="https://share.google/7hPXeuyficZwPIJJJ" target="_blank" rel="noopener" aria-label="Google Business Profile"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">© 2026 AJWA Web Studio. All Rights Reserved.</div>
+</footer>
+
+<script>
+  // header shadow on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  // mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuToggle.classList.toggle('open', open);
+    menuToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.classList.remove('open');
+  }));
+
+  // reveal on scroll
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // contact form (front-end only)
+  const form = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formMsg.classList.add('show');
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
